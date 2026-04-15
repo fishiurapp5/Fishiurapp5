@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>search</title>
+    <link rel="stylesheet" href="Styles.css">
+    <style>
+        /* Modo claro por defecto */
+        body {
+            background-color: white;
+            color: black;
+            font-family: Arial, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Cambiar negritas a color negro en modo claro */
+        b {
+            color: black;
+        }
+
+        /* Modo oscuro */
+        body.dark-mode {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+
+        /* Cambiar negritas a color blanco en modo oscuro */
+        body.dark-mode b {
+            color: white;
+        }
+
+        /* Botón para alternar entre modos */
+        .toggle-button {
+            margin: 20px;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <button class="toggle-button" onclick="toggleDarkMode()">Alternar Modo Oscuro</button>
+
+    <script>
+        // Función para alternar el modo oscuro
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <H3></H3>
+        <H3></H3>
+    <style>
+        body {
+            font-sinze: 74;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            margin-top: 50px;
+            color: #333;
+        }
+
+        .search-container {
+            position: relative;
+            margin: 20px auto;
+            width: 50%;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .suggestions {
+            position: absolute;
+            width: 100%;
+            background: #fff;
+            border: 1px solid #ccc;
+            border-top: none;
+            z-index: 1000;
+            max-height: 150px;
+            overflow-y: auto;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .suggestions a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: #333;
+            border-bottom: 1px solid #eee;
+        }
+
+        .suggestions a:hover {
+            background: #f0f0f0;
+        }
+    </style>
+    <script>
+        const links = [
+            { text: "cokillo ", url: "cokillo.html" },
+            { text: "mar01", url: "120mar.html " },
+            { text: "mike", url: " " },
+            { text: "eminencia", url: "" },
+            { text: "vip de powe", url: "" }
+        ];
+
+        function mostrarSugerencias() {
+            const input = document.getElementById("searchBar").value.toLowerCase();
+            const suggestionsContainer = document.getElementById("suggestions");
+            suggestionsContainer.innerHTML = "";
+
+            if (input) {
+                const filteredLinks = links.filter(link =>
+                    link.text.toLowerCase().includes(input)
+                );
+
+                filteredLinks.forEach(link => {
+                    const anchor = document.createElement("a");
+                    anchor.href = link.url;
+                    anchor.target = "_blank";
+                    anchor.textContent = link.text;
+                    suggestionsContainer.appendChild(anchor);
+                });
+            }
+        }
+
+        function buscar() {
+            const query = document.getElementById("searchBar").value.trim();
+            if (query) {
+                const url = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+                window.location.href = url;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1> </h1>
+    <div class="search-container">
+        <input 
+            type="text" 
+            id="searchBar" 
+            class="search-bar" 
+            placeholder="search people 🔍..." 
+            oninput="mostrarSugerencias()" 
+        />
+        <div id="suggestions" class="suggestions"></div>
+    </div>
+    <button onclick="buscar()" style="padding: 10px 20px; font-size: 16px; cursor: pointer;">
+        Buscar
+    </button>
+</body>
+</html>
+
+    
+
+
+
+
+
+
+
+
+
